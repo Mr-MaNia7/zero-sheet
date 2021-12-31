@@ -1,10 +1,11 @@
 Project Title: ZeroSheet
 
- Group Members        Section	   ID Number
-- Abdulkarim Getachew      1		UGR/7992/12
-- Bethelhem Alula		       2		UGR/0462/12
-- Bereket Asnake		       3		UGR/9574/12
-- Yonathan Tessema	       1		UGR/5102/12
+ Group Members --- Section --- ID Number
+- Abdulkarim Getachew --- 1 ---UGR/7992/12
+- Bethelhem Alula --- 2 ---UGR/0462/12
+- Bereket Asnake --- 3 ---UGR/9574/12
+- Yonathan Tessema --- 1 ---UGR/5102/12
+- 
 
 
 General Description
