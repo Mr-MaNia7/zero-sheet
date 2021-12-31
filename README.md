@@ -10,9 +10,9 @@ Project Title: ZeroSheet
 
 General Description
 
-ZeroSheet is a website-based application platform that helps small renting companies to track dow their timely transactions. The platform enables users to calculate daily transactions, generate a monthly income for their company and generally enhance the functionality and performance of the company's business plan.
+ZeroSheet is a website-based application platform that helps small renting companies to track down their timely transactions. The platform enables users to calculate daily transactions, generate a monthly income for their company and generally enhance the functionality and performance of the company's business plan.
 
-The platform will do very few functional features of Microosoft Excel but it will grealy assist the sales manager of the company greatly in making decisions at anytime. 
+The platform will do very few functional features of Microosoft Excel but mainly it will grealy assist the sales manager of the company in making decisions at anytime. 
 
 Project Specifications
 
