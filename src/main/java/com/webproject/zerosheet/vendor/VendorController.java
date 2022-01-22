@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/vendors")
 public class VendorController {
-    
+
     private final VendorService vendorService;
 
     @Autowired

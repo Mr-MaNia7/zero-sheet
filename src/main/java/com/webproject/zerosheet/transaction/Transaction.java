@@ -3,7 +3,7 @@ package com.webproject.zerosheet.transaction;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
+@Entity (name = "Transactions")
 @Table
 public class Transaction {
     @Id

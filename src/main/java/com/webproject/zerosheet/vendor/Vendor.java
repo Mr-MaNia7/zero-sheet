@@ -1,15 +1,21 @@
 package com.webproject.zerosheet.vendor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity (name = "Vendors")
 @Table
 // Purchase providers
 public class Vendor {
     @Id
     private String vendID;
+    @Column(
+            name = "vendor_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String vendName;
     private String bankAcc;
     private category category;

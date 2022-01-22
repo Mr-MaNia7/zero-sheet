@@ -1,16 +1,23 @@
 package com.webproject.zerosheet.customer;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 // Clients
-@Entity
+@Entity(name = "Customer")
 @Table
 public class Customer {
     @Id
     private String custID;
+
+    @Column(
+            name = "customer_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String custName;
     private String address;
     private String contactNo;
