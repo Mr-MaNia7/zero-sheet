@@ -16,50 +16,72 @@ import java.util.Collections;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-@Entity (name = "AppUser")
+@Entity (name = "Users")
 public class User implements UserDetails {
 
+    @SequenceGenerator(
+            name = "user_seq",
+            sequenceName = "user_seq",
+            allocationSize = 1
+    )
     @Id
-    private String userID;
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_seq"
+    )
+    private Long userID;
 
     @Column(
             name = "first_name",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private String Fname;
+    private String firstName;
 
     @Column(
             name = "last_name",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private String Lname;
-
-    @Column(
-            name = "username",
-            nullable = false,
-            columnDefinition = "TEXT",
-            unique = true
-    )
-    private String username;
-    private String password;
+    private String lastName;
 
     @Column(
             name = "email",
             nullable = false,
-            columnDefinition = "TEXT",
-            unique = true
+            columnDefinition = "TEXT"
     )
     private String email;
 
+    @Column(
+            name = "password",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String password;
+
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+
+    public User(String firstName, String lastName, String email, String password, UserRole userRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.userRole = userRole;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
         return Collections.singletonList(authority);
+    }
+
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
     }
 
     @Override
@@ -69,7 +91,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
