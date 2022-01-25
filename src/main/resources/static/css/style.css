@@ -1,0 +1,100 @@
+body {
+  font-family: 'Raleway';
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hr-text {
+  width: 30%;
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+}
+
+.hr-text::before {
+  content: '';
+  background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#818078), to(transparent));
+  background: linear-gradient(to right, transparent, #818078, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+
+.hr-text::after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding: 0 .5em;
+  line-height: 1.5em;
+  color: #818078;
+  background-color: #fcfcfa;
+}
+
+.logo-img {
+  width: 250px;
+  height: 250px;
+}
+
+.sign-in-txt {
+  font-family: 'Montserrat';
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.login-btn {
+  width: 30%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-size: 200%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#133987), color-stop(51%, #3a7bd5), to(#133987));
+  background-image: linear-gradient(to right, #133987 0%, #3a7bd5 51%, #133987 100%);
+  border-radius: 30px;
+  -webkit-transition: all 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.login-btn:hover {
+  background-position: right center;
+}
+
+.username-input {
+  width: 30%;
+}
+
+.password-input {
+  width: 30%;
+}
+
+.forgot-password {
+  color: #133987;
+  font-size: 0.75rem;
+}
+
+.explanation {
+  color: #aaa;
+  font-size: 1.5rem;
+  width: 60%;
+  text-align: center;
+}
+
+.help-txt {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.forgot-password > span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
