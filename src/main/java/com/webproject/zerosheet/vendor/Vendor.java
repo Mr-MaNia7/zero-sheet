@@ -11,35 +11,22 @@ import javax.persistence.Table;
 public class Vendor {
     @Id
     private String vendID;
-    @Column(
-            name = "vendor_name",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
     private String vendName;
     private String bankAcc;
-    private category category;
+    private Category category;
     private String address;
-
-    // Type of purchase from vendors
-    private enum category{
-        Communication,
-        Maintenance,
-        RawMaterials,
-        Housing
-    }
 
     public Vendor() {
     }
 
-    public Vendor(String vendName, String bankAcc, Vendor.category category, String address) {
+    public Vendor(String vendName, String bankAcc, Category category, String address) {
         this.vendName = vendName;
         this.bankAcc = bankAcc;
         this.category = category;
         this.address = address;
     }
 
-    public Vendor(String vendID, String vendName, String bankAcc, Vendor.category category, String address) {
+    public Vendor(String vendID, String vendName, String bankAcc, Category category, String address) {
         this.vendID = vendID;
         this.vendName = vendName;
         this.bankAcc = bankAcc;
@@ -71,11 +58,11 @@ public class Vendor {
         this.bankAcc = bankAcc;
     }
 
-    public Vendor.category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Vendor.category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

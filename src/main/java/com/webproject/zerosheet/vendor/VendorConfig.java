@@ -9,18 +9,19 @@ import java.util.List;
 @Configuration
 public class VendorConfig {
 
-    // Saving data to database
-//    @Bean
-//    CommandLineRunner commandLineRunner(VendorRepository vendorRepository){
-//        return args ->{
-//            //Test case objects of vendor class
-//            Vendor v1 = new Vendor(
-//
-//            );
-//            Vendor v2 = new Vendor(
-//
-//            );
-//            vendorRepository.saveAll(List.of(v1, v2));
-//        };
-//    }
+    @Bean
+    CommandLineRunner vendorCommandLineRunner(VendorRepository vendorRepository){
+        return args -> {
+            //Test case customer objects
+            Vendor v1= new Vendor(
+                    "V001",
+                    "EthioTelecom",
+                    "CBE-10001313133",
+                    Category.Communication,
+                    "Addis Ababa"
+            );
+
+            vendorRepository.save(v1);
+        };
+    }
 }

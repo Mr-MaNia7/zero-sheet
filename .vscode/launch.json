@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ZeroSheetApplication<zero-sheet>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.webproject.zerosheet.ZeroSheetApplication",
+            "projectName": "zero-sheet",
+            "args": ""
+        }
+    ]
+}

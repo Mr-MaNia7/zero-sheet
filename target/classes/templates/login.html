@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ZeroSheet - Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <form th:action="@{/login}" method="post">
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">Invalid username or
+                password.</div>
+        </div>
+
+        <div class="container">
+            <div class="d-flex flex-column align-items-center">
+                <img class="logo-img" th:src="@{/imgs/logo.png}" alt="">
+                <h2 class="sign-in-txt mb-3">Sign in</h2>
+
+                <input name="username" class="username-input form-control mb-3" type="text" placeholder="Username">
+
+                <input name="password" class="password-input form-control mb-4" type="password" placeholder="Password">
+                <button class="login-btn btn btn-primary mb-1">Login</button>
+                <a href = "" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <hr class="hr-text ms-auto me-auto" data-content="OR">
+
+        </div>
+    </form>
+
+
+    
+
+
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

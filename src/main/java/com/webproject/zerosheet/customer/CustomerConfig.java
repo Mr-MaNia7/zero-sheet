@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomerConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(CustomerRepository customerRepository){
+    CommandLineRunner customerCommandLineRunner(CustomerRepository customerRepository){
         return args -> {
             //Test case customer objects
             Customer c1= new Customer(
