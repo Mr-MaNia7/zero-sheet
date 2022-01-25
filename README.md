@@ -1,3 +1,9 @@
 # zero-sheet
 ZeroSheet is a website based application platform that helps small businesses track down the timely transactions of their company. The platform enables users to calculate daily transactions, generate monthly income of their company and  generally enhance the functionality and performance of the company's business plan.
-You need to create a database with the exact configurations as presented on the application.properties file.
+
+#Group Members
+Abdulkarim Getachew --- 1 --- UGR/7992/12
+Bereket Asnake --- 3 --- UGR/9574/12
+Bethelhem Alula --- 2 --- UGR/0462/12
+Hailemariam Kefale --- 3 --- UGR/0652/12
+Yonathan Tessema --- 1 --- UGR/5102/12
