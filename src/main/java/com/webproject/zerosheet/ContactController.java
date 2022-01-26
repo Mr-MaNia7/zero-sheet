@@ -29,19 +29,9 @@ public class ContactController {
     public ModelAndView result (@ModelAttribute("cform") ContactForm cform){
         ModelAndView modelAndView = new ModelAndView("contactresult");
         
-        Contact text = new Contact();
-        text.setText(cform.getText());
-        cRepo.save(text);
-        
-        
-        Contact cfname = new Contact();
-        text.setText(cform.getText());
-        cRepo.save(cfname);
-
-        
-        Contact eAddress = new Contact();
-        text.setText(cform.getText());
-        cRepo.save(eAddress);
+        Contact cont = new Contact();
+        cont.setText(cform.getText());
+        cRepo.save(cont);
 
         return modelAndView;
     }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zero Sheet: Contact Us</title>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Rock+3D&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <div class="container">
+                                <a th:href="@{/}" class="navbar-brand">Zerosheet</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarNav"></div>
+
+                        <a th:href="@{/login}" class="navbar-brand">Login</a>
+                        <a th:href="@{/registration}" class="navbar-brand">Register</a>
+                </div>
+                </div>
+                </div>
+        </nav>
+    </header>
+    <main style="padding-left: 3rem;padding-bottom: 5rem;">
+                <div>
+                    <h2>Got me any recommendations?</h2>
+                    <p>We are happy to hear it!</p>
+                </div>
+
+
+
+                <form th:action="@{/contact}" method="POST" th:object="${cform}">
+                    <textarea name="recommendation" id="" cols="80" rows="10"
+                        th:field="*{text}">Hi Team I have a suggestion</textarea><br>
+
+                    <input type="text" th:field="*{cfname}" id="">
+                    
+                    <button type="submit">Submit</button>
+
+                </form>
+
+    </main>
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+            </a>
+            <span class="text-muted">&copy; 2022 Company, Inc</span>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

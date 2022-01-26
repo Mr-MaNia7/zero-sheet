@@ -1,7 +1,5 @@
 package com.webproject.zerosheet;
 
-import java.util.Arrays;
-
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -50,12 +48,5 @@ public class ZeroSheetApplication {
 				));
 		};
 	}
-	
-	/*@Bean
-	public CommandLineRunner dataseader(ItemInstanceRepository instancerepo) {
-		return args -> {
-			instancerepo.save(new ItemInstance( Status.ON_LOAN, null));
-		};
-	}*/
 
 }

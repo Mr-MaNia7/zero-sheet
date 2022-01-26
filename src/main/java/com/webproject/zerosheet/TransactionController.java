@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
+
+
 @RequiredArgsConstructor
 @Controller
 public class TransactionController {
@@ -23,6 +25,7 @@ public class TransactionController {
         ModelAndView modelAndView = new ModelAndView("transaction");
         modelAndView.addObject("tform",new TransactionForm());
         modelAndView.addObject("itemNames",itemRepo.findAll());
+        modelAndView.addObject("names",tRepo.findAll());
         return modelAndView;
     }
 
@@ -30,19 +33,9 @@ public class TransactionController {
     public ModelAndView result (@ModelAttribute("tform") TransactionForm tform){
         ModelAndView modelAndView = new ModelAndView("result");
         
-        Transaction tname = new Transaction();
-        tname.setTransactionName(tform.getTransactionName());
-        tRepo.save(tname);
-        
-        
-        Transaction tquantity = new Transaction();
-        tname.setTransactionName(tform.getTransactionName());
-        tRepo.save(tquantity);
-
-        
-        Transaction tdueBackDate = new Transaction();
-        tname.setTransactionName(tform.getTransactionName());
-        tRepo.save(tdueBackDate);
+        Transaction transaction = new Transaction();
+        transaction.setTransactionName(tform.getTransactionName());
+        tRepo.save(transaction);
 
         return modelAndView;
     }
