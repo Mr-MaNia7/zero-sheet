@@ -1,0 +1,51 @@
+package com.webproject.zerosheet;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import lombok.RequiredArgsConstructor;
+@RequiredArgsConstructor
+@Controller
+public class TransactionController {
+    @Autowired
+    private TransactionRepository tRepo;
+    
+    @Autowired
+    private final ItemRepository itemRepo;
+    
+    @GetMapping("/transaction")
+    public ModelAndView indexPage(){
+        ModelAndView modelAndView = new ModelAndView("transaction");
+        modelAndView.addObject("tform",new TransactionForm());
+        modelAndView.addObject("itemNames",itemRepo.findAll());
+        return modelAndView;
+    }
+
+    @PostMapping("/transaction")
+    public ModelAndView result (@ModelAttribute("tform") TransactionForm tform){
+        ModelAndView modelAndView = new ModelAndView("result");
+        
+        Transaction tname = new Transaction();
+        tname.setTransactionName(tform.getTransactionName());
+        tRepo.save(tname);
+        
+        
+        Transaction tquantity = new Transaction();
+        tname.setTransactionName(tform.getTransactionName());
+        tRepo.save(tquantity);
+
+        
+        Transaction tdueBackDate = new Transaction();
+        tname.setTransactionName(tform.getTransactionName());
+        tRepo.save(tdueBackDate);
+
+        return modelAndView;
+    }
+
+
+}
