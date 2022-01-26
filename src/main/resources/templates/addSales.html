@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ZS - Add Sales</title>
+</head>
+<body>
+<div align="left">
+    <h1>Add A New Sales</h1>
+    <br />
+    <form th:action="@{/addS}" th:object="${formData}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Sales Date</td>
+                <td><input type="date" th:field="*{salesDate}" /></td>
+            </tr>
+            <tr>
+                <td>Customer ID</td>
+                <td><input type="text" th:field="*{custID}" /></td>
+            </tr>
+            <tr>
+                <td>Due Amount</td>
+                <td><input type="text" th:field="*{amount}" /></td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td><input type="text" th:field="*{tax}" /></td>
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td><input type="text" th:field="*{qty}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Add</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
