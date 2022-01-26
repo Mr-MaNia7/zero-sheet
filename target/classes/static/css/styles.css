@@ -1,0 +1,61 @@
+/*header nav{
+    border-bottom: outset magenta;
+    border-radius: 2em;
+    height: auto;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#header_nav {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin-bottom: 1em;
+    padding: .5em;
+}
+
+#header_nav li{
+    margin: 0 1em;
+}
+
+#logo{
+    font-family:'Rock 3D', cursive;
+    font-size: 2em;
+    font-weight: 900;
+    background: wheat;
+    border: solid wheat;
+    border-top-left-radius: 4em;
+    border-bottom-right-radius: 2em;
+}
+
+#main_home{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+footer{
+    border-top: inset magenta;
+    border-radius: 2em;
+}
+
+address a{
+    text-decoration: none;
+    color: gray!important;
+}
+
+address{
+    margin-top: 2em;
+    text-align: center;
+    font-family: monospace!important;
+}
+
+a:visited{
+    color:navy;
+}
+
+a:link{
+    color:navy;
+}
+*/

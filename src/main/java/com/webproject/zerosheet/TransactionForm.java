@@ -3,6 +3,8 @@ package com.webproject.zerosheet;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;

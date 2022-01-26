@@ -38,7 +38,7 @@
         <img th:src="@{/images/cover.png}" alt="cover-logo" width="80%" />
         <h1 style="text-align: center;padding-bottom: 2rem;">Items to be rented - provided by our organaization </h1>
         <div class="container">
-            <div class="row row-cols-4">
+            <div class="row row-cols-3">
                 <div th:each="item : ${items}" class="col">
                     <span th:text="${item.name}">
                 </span>

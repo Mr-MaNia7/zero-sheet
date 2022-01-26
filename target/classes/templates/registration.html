@@ -10,34 +10,67 @@
     <title>ZeroSheet - Register</title>
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <div class="container">
+                                <a th:href="@{/}" class="navbar-brand">Zerosheet</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarNav"></div>
 
-<form th:object="${userFormData}" th:action="@{/registration}" method="post">
-    <div class="container mt-1">
-        <div class="d-flex flex-column align-items-center">
-            <img class="logo-img mb-4" th:src="@{/imgs/logo.png}" alt="">
-            <h2 class="sign-in-txt mb-3">Register for free!</h2>
+                        <a th:href="@{/login}" class="navbar-brand">Login</a>
+                        <a th:href="@{/registration}" class="navbar-brand">Register</a>
+                </div>
+                </div>
+                </div>
+        </nav>
+    </header>
+    <main>
+        <form th:object="${userFormData}" th:action="@{/registration}" method="post">
+            <div class="container mt-1">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="logo-img mb-4" th:src="@{/imgs/logo.png}" alt="">
+                    <h2 class="sign-in-txt mb-3">Register for free!</h2>
+        
+                    <p class="explanation mb-5">
+                        ZeroSheet helps small business increase their productivity, revenue and overall performace by streamlining their management.
+                    </p>
+        
+                    <input name="firstName" class="username-input form-control mb-3" th:field="*{firstName}" type="text" placeholder="First Name">
+        
+                    <input name="lastName" class="username-input form-control mb-3" th:field="*{lastName}" type="text" placeholder="Last Name">
+        
+                    <input name="username" class="username-input form-control" th:field="*{username}" type="text" placeholder="Username">
+        
+                    <div class="help-txt mb-3">User your email as username!</div>
+        
+                    <input name="password" class="password-input form-control" th:field="*{password}" type="password" placeholder="Password">
+                    <div class="help-txt mb-4">At least 6 characters.</div>
+        
+                    <button class="login-btn btn btn-primary mb-2">Sign Up</button>
+        
+                    <a th:href = "@{/login}" class="forgot-password">Already Registered? <span>Login</span></a>
+        
+                </div>
+            </div>
+        </form>
+    </main>
 
-            <p class="explanation mb-5">
-                ZeroSheet helps small business increase their productivity, revenue and overall performace by streamlining their management.
-            </p>
-
-            <input name="firstName" class="username-input form-control mb-3" th:field="*{firstName}" type="text" placeholder="First Name">
-
-            <input name="lastName" class="username-input form-control mb-3" th:field="*{lastName}" type="text" placeholder="Last Name">
-
-            <input name="username" class="username-input form-control" th:field="*{username}" type="text" placeholder="Username">
-
-            <div class="help-txt mb-3">User your email as username!</div>
-
-            <input name="password" class="password-input form-control" th:field="*{password}" type="password" placeholder="Password">
-            <div class="help-txt mb-4">At least 6 characters.</div>
-
-            <button class="login-btn btn btn-primary mb-2">Sign Up</button>
-
-            <a th:href = "@{/login}" class="forgot-password">Already Registered? <span>Login</span></a>
-
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+            </a>
+            <span class="text-muted">&copy; 2022 Company, Inc</span>
         </div>
-    </div>
-</form>
+
+    </footer>
+
+
 </body>
 </html>

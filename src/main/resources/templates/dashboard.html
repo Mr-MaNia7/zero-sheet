@@ -7,58 +7,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <title>ZeroSheet - Dashboard</title>
+    <title>ZeroSheet - Store</title>
 </head>
 <body>
-<nav id="dash-nav" class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/landingPage}" id="logo">ZeroSheet</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/dashboard}">Dashboard</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/prod}">All Products</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addProd}">New Product</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Customers
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                        <li><a class="dropdown-item" th:href="@{/customers}">All Customers</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addCust}">New Customer</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sales
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                        <li><a class="dropdown-item" th:href="@{/sales}">All Customers</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/addSales}">New Customer</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    <header>
+        <nav id="dash-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}" id="logo">ZeroSheet</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" th:href="@{/products}">All Products</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" th:href="@{/addProd}">New Product</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Customers
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <li><a class="dropdown-item" th:href="@{/customers}">All Customers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" th:href="@{/addCust}">New Customer</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Sales
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                <li><a class="dropdown-item" th:href="@{/sales}">All Customers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" th:href="@{/addSales}">New Customer</a></li>
+                            </ul>
+                        </li>-->
 
+                        <li class="nav-item">
+                                
+                            <form th:action="@{/logout}" method="post" class="nav-link" aria-expanded="false">
+                                        <input type="submit" value="Logout" />
+                                </form>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+<main style="align-content: center; padding: 3rem 3rem 3rem 3rem; " class="d-flex justify-content-around">
+    <div class="p-2">
+        <div class="card" style="width: 18rem; ">
+            <img th:src="@{/imgs/logo.png}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Add Your Items</h5>
+              <p class="card-text">Add your new items list with any types of fields and properties.</p>
+              <a th:href="@{/addProd}" class="btn btn-primary stretched-link">Go to <span class="fw-bold">Add Products</span> page</a>
+            </div>
+          </div>
+    </div>
+    
+
+      <div class="p-2">
+        <div class="card" style="width: 18rem; ">
+            <img th:src="@{/imgs/logo.png }"  class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">View Items in your company</h5>
+              <p class="card-text">View the detailed description of your items in the store.</p>
+              <a th:href="@{/products}" class="btn btn-primary stretched-link">Go to <span class="fw-bold">Products List</span> page</a>
+            </div>
+          </div>
+      </div>
+
+</main>
 <section>
 <!--    Render some content here.-->
 <!--    Currently only products, customers and sales information available.-->
 </section>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <span class="text-muted">&copy; 2022 Company, Inc</span>
+    </div>
+
+</footer>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

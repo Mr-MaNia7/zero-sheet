@@ -2,46 +2,110 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
 <head>
-    <meta charset="utf-8"/>
-    <title>Product Manager</title>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <title>ZeroSheet - Product Manager</title>
+    </head>
 </head>
 <body>
-<div align="left">
-    <h3>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout" />
-        </form>
-    </h3>
-    <h1>Product List</h1>
-    <a th:href="@{/addProd}">Create New Product</a>
-    <br/><br/>
-    <table border="1" cellpadding="12">
-        <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Price</th>
-            <th>State</th>
-            <th>ToDos</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product : ${listProducts}">
-            <td th:text="${product.prodID}">Product ID</td>
-            <td th:text="${product.prodName}">Name</td>
-            <td th:text="${product.prodType}">Type</td>
-            <td th:text="${product.unitPrice}">Price</td>
-            <td th:text="${product.state}">State</td>
-            <td>
-                <a th:href="@{'/editProd/' + ${product.prodID}}">Edit</a>
-                <div sec:authorize="hasRole('SUPER')">
-                    <a th:href="@{'/deleteProd/' + ${product.prodID}}">Delete</a>
+    <header>
+        <nav id="dash-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/dashboard}" id="logo">ZeroSheet Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" th:href="@{/prod}">All Products</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" th:href="@{/addProd}">New Product</a></li>
+                            </ul>
+                        </li>
+                        
+
+                        <li class="nav-item">
+                                
+                            <form th:action="@{/logout}" method="post" class="nav-link" aria-expanded="false">
+                                        <input type="submit" value="Logout" />
+                                </form>
+                        </li>
+
+                    </ul>
                 </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div align="left">
+            
+            <h1 style="padding-top: 2rem; text-align: center;"  >Product List</h1>
+            <div align="center">
+                <a th:href="@{/addProd}">
+                    <button type="button" class="btn btn-light">Add New Product</button> 
+                </a>
+            </div>
+            <br/><br/>
+            <table border="1" cellpadding="12">
+                <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Unit</th>
+                    <th>Area Coverage (expected)</th>
+                    <th>UnitPrice</th>
+                    <th>Total Quantity</th>
+                    <th>Loaned Quantity</th>
+                    <th>Maintenance Quantity</th>
+                    <th>ToDos</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${listItem}">
+                    <td th:text="${product.id}">Item ID</td>
+                    <td th:text="${product.name}">Name</td>
+                    <td th:text="${product.unit}">Type</td>
+                    <td th:text="${product.expectedArea}">Type</td>
+                    <td th:text="${product.unitPrice}">Price</td>
+                    <td th:text="${product.totalQuantity}">Quantity</td>
+                    <td th:text="${product.loanquant}">Loaned Quantity</td>
+                    <td th:text="${product.maintenancequant}">Maintenance Quantity</td>
+                    <td>
+                        <a th:href="@{'/editProd/' + ${product.id}}">Edit</a>
+                        <div sec:authorize="hasRole('SUPER')">
+                            <a th:href="@{'/deleteProd/' + ${product.id}}">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+            <div align="right"> 
+                <a th:href="@{/addProd}">
+                    <button type="button" class="btn btn-light">Add New Product</button> 
+                </a>
+            </div>
+        
+    </main>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+            </a>
+            <span class="text-muted">&copy; 2022 Company, Inc</span>
+        </div>
+
+    </footer>
+            <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
