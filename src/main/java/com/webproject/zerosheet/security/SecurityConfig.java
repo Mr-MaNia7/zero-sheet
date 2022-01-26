@@ -1,68 +1,60 @@
 package com.webproject.zerosheet.security;
 
-import com.webproject.zerosheet.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.webproject.zerosheet.user.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    @Lazy
-    private UserService userService;
+public class SecurityConfig{
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public UserDetailsService userDetailsService(UserRepository userRepo){
+
+        return username -> {
+            var user = userRepo.findByUsername(username);
+
+            if(user == null){
+                throw new UsernameNotFoundException("User with username %s is not found!" + username);
+            }
+
+            return (UserDetails) user;
+        };
+
+    }
+
+    @Bean
+    PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userService);
-        authProvider.setPasswordEncoder(bCryptPasswordEncoder());
-
-        return authProvider;
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // Default user - developer to add users
-        auth.inMemoryAuthentication().
-                withUser("zsadmin").
-                password(bCryptPasswordEncoder().encode("zsadmin124")).
-                roles("ADMIN");
-        auth.authenticationProvider(authenticationProvider());
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/registration")
-                        .hasAnyAuthority("REGULAR")
-                .antMatchers("/customers")
-                    .hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated()
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        return http
+                .authorizeRequests()
+                .antMatchers("/registration", "/products").permitAll()
+                .antMatchers( "/addProd")
+                .hasRole("REGULAR")
+                .antMatchers("/editProd", "/deleteProd").hasRole("ADMIN")
+                .antMatchers("/dashboard").permitAll()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .usernameParameter("username")
-                    .defaultSuccessUrl("/index")
-                    .permitAll()
+                .defaultSuccessUrl("/products")
                 .and()
                 .logout()
-                    .invalidateHttpSession(true)
-                    .clearAuthentication(true)
-                    .logoutSuccessUrl("/login?logout")
-                    .permitAll();
+                .logoutSuccessUrl("/login")
+                .and()
+                .build();
     }
+
+
+
 }

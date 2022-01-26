@@ -1,34 +1,39 @@
 package com.webproject.zerosheet.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
 
-    private UserService serv;
+    @Autowired
+    private UserService userService;
 
-    public UserController(UserService serv) {
-        this.serv = serv;
-    }
-
-    @GetMapping("/login")
-    public String showLoginForm(){
-        return "login";
-    }
 
     @GetMapping("/registration")
-    public String showRegister(Model model){
-        model.addAttribute("formData", new UserDataTransfer());
+    public String showRegistration(UserFormData userFormData){
         return "registration";
     }
 
-    @PostMapping("/registration")
-    public String regUser(@ModelAttribute("formData") UserDataTransfer userData){
+    @PostMapping("registration")
+    public String newUser(@Valid UserFormData userFormData, BindingResult result){
+        if (result.hasErrors()){
+            return "registration";
+        }
 
-        serv.registerUser(userData);
+        // Convert data
+        var addedUser = userFormData.convertData();
 
-        return "redirect:/index";
+        // Save data
+        userService.newUser(addedUser);
+
+        return "redirect:/login";
+
     }
 }

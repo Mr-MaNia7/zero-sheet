@@ -1,10 +1,17 @@
 package com.webproject.zerosheet.user;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-public interface UserService extends UserDetailsService {
+@Service
+public class UserService {
 
-    User registerUser(UserDataTransfer userData);
+    private UserRepository userRepo;
 
+    public UserService(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+
+    public void newUser(User user){
+        userRepo.save(user);
+    }
 }
