@@ -1,7 +1,9 @@
 package com.webproject.zerosheet;
 
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -9,5 +11,7 @@ import lombok.Data;
 public class TransactionForm {
     private String transactionName;
     private String quantity;
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date dueBackDate;
 }
