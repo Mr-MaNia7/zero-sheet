@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+<head>
+    <meta charset="utf-8"/>
+    <title>Product Manager</title>
+</head>
+<body>
+<div align="left">
+    <h3>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" />
+        </form>
+    </h3>
+    <h1>Product List</h1>
+    <a th:href="@{/addProd}">Create New Product</a>
+    <br/><br/>
+    <table border="1" cellpadding="12">
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>State</th>
+            <th>ToDos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${listProducts}">
+            <td th:text="${product.prodID}">Product ID</td>
+            <td th:text="${product.prodName}">Name</td>
+            <td th:text="${product.prodType}">Type</td>
+            <td th:text="${product.unitPrice}">Price</td>
+            <td th:text="${product.state}">State</td>
+            <td>
+                <a th:href="@{'/editProd/' + ${product.prodID}}">Edit</a>
+                <div sec:authorize="hasRole('SUPER')">
+                    <a th:href="@{'/deleteProd/' + ${product.prodID}}">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

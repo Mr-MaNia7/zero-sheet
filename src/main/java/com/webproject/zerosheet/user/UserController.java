@@ -16,10 +16,17 @@ public class UserController {
     private UserService userService;
 
 
+    @GetMapping("/login")
+    public String showLogin(){
+        return "login";
+    }
+
+
     @GetMapping("/registration")
     public String showRegistration(UserFormData userFormData){
         return "registration";
     }
+
 
     @PostMapping("registration")
     public String newUser(@Valid UserFormData userFormData, BindingResult result){

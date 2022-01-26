@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Add New Product</title>
+</head>
+<body>
+<div align="left">
+    <h1>Add A New Product</h1>
+    <br />
+    <form th:action="@{/add}" th:object="${formData}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Product Name:</td>
+                <td><input type="text" th:field="*{prodName}" /></td>
+            </tr>
+            <tr>
+                <td>Product Type</td>
+                <td><input type="text" th:field="*{prodType}" /></td>
+            </tr>
+            <tr>
+                <td>Unit Price</td>
+                <td><input type="text" th:field="*{unitPrice}" /></td>
+            </tr>
+            <tr>
+                <td>Current State</td>
+                <td>
+                    <select name="state" id="state">
+                        <option th:each="state : ${T(com.webproject.zerosheet.inventory.Products.State).values()}"
+                                th:value="${state}"
+                                th:text="${state}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Add</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

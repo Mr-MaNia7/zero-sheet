@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7,39 +7,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <title>ZeroSheet - Signup</title>
+    <title>ZeroSheet - Register</title>
 </head>
 <body>
 
-  <form th:object="${formData}" th:action="@{/registration}" method="post">
-      <div class="container mt-1">
-          <div class="d-flex flex-column align-items-center">
-              <img class="logo-img mb-4" th:src="@{/imgs/logo.png}" alt="">
-              <h2 class="sign-in-txt mb-3">Register for free!</h2>
+<form th:object="${userFormData}" th:action="@{/registration}" method="post">
+    <div class="container mt-1">
+        <div class="d-flex flex-column align-items-center">
+            <img class="logo-img mb-4" th:src="@{/imgs/logo.png}" alt="">
+            <h2 class="sign-in-txt mb-3">Register for free!</h2>
 
-              <p class="explanation mb-5">
-                  ZeroSheet helps small business increase their productivity, revenue and overall performace by streamlining their management.
-              </p>
+            <p class="explanation mb-5">
+                ZeroSheet helps small business increase their productivity, revenue and overall performace by streamlining their management.
+            </p>
 
-              <input name="firstName" class="username-input form-control mb-3" th:field="*{firstName}" type="text" placeholder="First Name">
+            <input name="firstName" class="username-input form-control mb-3" th:field="*{firstName}" type="text" placeholder="First Name">
 
-              <input name="lastName" class="username-input form-control mb-3" th:field="*{lastName}" type="text" placeholder="Last Name">
+            <input name="lastName" class="username-input form-control mb-3" th:field="*{lastName}" type="text" placeholder="Last Name">
 
-              <input name="username" class="username-input form-control" th:field="*{username}" type="text" placeholder="Username">
+            <input name="username" class="username-input form-control" th:field="*{username}" type="text" placeholder="Username">
 
-              <div class="help-txt mb-3">User your email as username!</div>
+            <div class="help-txt mb-3">User your email as username!</div>
 
-              <input name="password" class="password-input form-control" th:field="*{password}" type="password" placeholder="Password">
-              <div class="help-txt mb-4">At least 6 characters.</div>
+            <input name="password" class="password-input form-control" th:field="*{password}" type="password" placeholder="Password">
+            <div class="help-txt mb-4">At least 6 characters.</div>
 
-              <button class="login-btn btn btn-primary mb-2">Sign Up</button>
+            <button class="login-btn btn btn-primary mb-2">Sign Up</button>
 
-              <a th:href = "@{/login}" class="forgot-password">Already Registered? <span>Login</span></a>
+            <a th:href = "@{/login}" class="forgot-password">Already Registered? <span>Login</span></a>
 
-          </div>
-      </div>
-  </form>
-
-
+        </div>
+    </div>
+</form>
 </body>
 </html>

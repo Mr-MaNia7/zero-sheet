@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ZS - Add Customer</title>
+</head>
+<body>
+<div align="left">
+    <h1>Add A New Customer</h1>
+    <br />
+    <form th:action="@{/addC}" th:object="${formData}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Customer Full Name:</td>
+                <td><input type="text" th:field="*{fullName}" /></td>
+            </tr>
+            <tr>
+                <td>Common Living Address Name</td>
+                <td><input type="text" th:field="*{commonNameAddress}" /></td>
+            </tr>
+            <tr>
+                <td>City Address</td>
+                <td><input type="text" th:field="*{cityAddress}" /></td>
+            </tr>
+            <tr>
+                <td>Contact No</td>
+                <td><input type="text" th:field="*{contactNo}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Add</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

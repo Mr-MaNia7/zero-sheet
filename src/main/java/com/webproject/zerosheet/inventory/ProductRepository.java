@@ -2,14 +2,11 @@ package com.webproject.zerosheet.inventory;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+@Repository
+public interface ProductRepository extends JpaRepository<Products, Long> {
 
-public interface ProductRepository extends JpaRepository<Product, String> {
-    @Query("SELECT p from Products p WHERE p.productID = ?1")
-    Optional<Product> findProductByID(Long productID);
-
-    @Query("SELECT p from Products p WHERE p.productName = ?1")
-    Optional<Product> findProductByName(String productName);
-
+//    @Query("SELECT p from products p WHERE p.prodType = ?1")
+//    Products findByType(String prodType);
 }

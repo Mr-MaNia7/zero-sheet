@@ -1,42 +1,48 @@
 package com.webproject.zerosheet.customer;
 
+import com.webproject.zerosheet.inventory.ProductDto;
+import com.webproject.zerosheet.inventory.Products;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping(path = "customers")
+@Controller
 public class CustomerController {
 
-    private final CustomerService customerService;
-
     @Autowired
-    public CustomerController(CustomerService customerService){
-        this.customerService = customerService;
+    private CustomerService customerService;
+
+    @RequestMapping("/customers")
+    public String viewCustomers(Model model){
+        List<Customer> listCustomer = customerService.getAll();
+        model.addAttribute("listCustomer", listCustomer);
+
+        return "customers";
     }
 
-    @GetMapping
-    public List<Customer> getCust(){
-        return customerService.getCust();
+    @RequestMapping(value = "/addCust")
+    public String showAddCustomerForm(Model model){
+        model.addAttribute("formData", new CustomerDto());
+
+        return "addCust";
     }
 
-    @PostMapping
-    public void newCustomer(@RequestBody Customer customer){
-        customerService.addCustomer(customer);
+    @RequestMapping(value = "/addC", method = RequestMethod.POST)
+    public String addNewCustomer(@ModelAttribute("formData") CustomerDto customerDto){
+
+        customerService.addCustomer(customerDto);
+
+        return "redirect:/customers";
     }
 
-    @DeleteMapping(path = "{custID}")
-    public void remCustomer(@PathVariable("custID") String custID){
-        customerService.deleteCustomer(custID);
-    }
+    @RequestMapping("/deleteCust/{custID}")
+    public String deleteCustomer(@PathVariable(name = "custID") int custID) {
 
-    @PutMapping(path = "{custID}")
-    public void updateCustomer(@PathVariable("custID") String custID,
-                               @RequestParam(required = false) String custName,
-                               @RequestParam(required = false) String address,
-                               @RequestParam(required = false) String contactNo){
-        customerService.updateStudent(custID, custName, address, contactNo);
-    }
+        customerService.remCustomer(custID);
 
+        return "redirect:/customers";
+    }
 }

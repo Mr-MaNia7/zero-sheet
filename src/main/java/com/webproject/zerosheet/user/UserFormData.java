@@ -36,16 +36,13 @@ public class UserFormData {
     @NotBlank(message = "Enter a password")
     private String password;
 
-//    private boolean regularRole = false;
-
-
     public User convertData(){
         return new User(
                 this.getFirstName(),
                 this.getLastName(),
                 this.getUsername(),
                 encoder().encode(this.getPassword()),
-                Role.REGULAR
+                Role.USER
         );
     }
 }

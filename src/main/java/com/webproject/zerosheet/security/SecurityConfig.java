@@ -40,14 +40,18 @@ public class SecurityConfig{
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http
                 .authorizeRequests()
-                .antMatchers("/registration", "/products").permitAll()
-                .antMatchers( "/addProd")
-                .hasRole("REGULAR")
-                .antMatchers("/editProd", "/deleteProd").hasRole("ADMIN")
-                .antMatchers("/dashboard").permitAll()
+                .antMatchers( "/dashboard", "/inventory", "/products", "/sales",
+                        "/purchases", "/vendors", "customers", "/addProd", "/addSales",
+                        "/addPurch", "/addVendor", "/addCust"
+                ).access("hasRole('SUPER') || hasRole('ADMIN') || hasRole('USER')")
+                .antMatchers("/editProd", "/deleteProd", "/editVend", "/deleteVend",
+                        "/editInv", "/editCust", "/editSales", "/editPurch", "/deleteSales", "/deletePurch")
+                .hasRole("SUPER")
+                .antMatchers("/", "/**").access("permitAll")
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/products")
+                .loginPage("/login")
+                .defaultSuccessUrl("/dashboard")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login")

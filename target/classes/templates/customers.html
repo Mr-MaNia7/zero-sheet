@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="left">
+    <h1>Customers List</h1>
+    <a th:href="@{/addCust}">Create New Customer</a>
+    <br/><br/>
+    <table border="1" cellpadding="12">
+        <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Customer Full Name</th>
+            <th>Customer Local Address</th>
+            <th>Customer City Address</th>
+            <th>Customer Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${listCustomer}">
+            <td th:text="${customer.custID}">Product ID</td>
+            <td th:text="${customer.fullName}">Full Name</td>
+            <td th:text="${customer.commonNameAddress}">Local Address</td>
+            <td th:text="${customer.cityAddress}">City Address</td>
+            <td th:text="${customer.contactNo}">Phone Number</td>
+            <td>
+                <a th:href="@{'/editProd/' + ${product.prodID}}">Edit</a>
+                <div sec:authorize="hasRole('SUPER')">
+                    <a th:href="@{'/deleteProd/' + ${product.prodID}}">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
